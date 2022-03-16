@@ -1,2 +1,2 @@
-# TwoJsTemplate
+# TwoJsSketches
 Two.jsでスケッチをするためのテンプレートです。
