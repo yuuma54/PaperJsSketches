@@ -5,8 +5,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
 
-        <!-- 描画するTwo.jsライブラリを読み込む：https://two.js.org -->
-        <script src="two.min.js"></script>
+        <!-- Paper.jsを読み込む：http://paperjs.org/ 
+             多少ファイルサイズが大きいので、オンラインのライブラリ提供サービスからダウンロードする。
+             そうすることによって、2回目使う時以降、ブラウザがキャッシュから読み込んで、
+             ページロードが軽くなる。
+        -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js" integrity="sha512-ovjLI1ZcZe6bw+ImQ21r+sv8q/Vwob2kq7tFidK6E1LWfi0T4uobbmpfEU1//a9h9o5Kkt+MnMWf6rWlg0EiMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <!-- 画像をダウンロードするためのライブラリを読み込む：https://github.com/eligrey/FileSaver.js/ -->
         <script src="FileSaver.min.js"></script>
@@ -37,7 +41,9 @@
         </header>
 
         <!-- スケッチはこの中に表示される。 -->
-        <div id="container"></div>
+        <div id="container">
+            <canvas id="paper-canvas" resize></canvas>
+        </div>
     </body>
 
     <!-- HTMLが全て読み込まれた時点でスケッチのJavaScriptを読み込む。これが自分で編集するファイルになる。
@@ -46,7 +52,12 @@
 
     <!-- 以下のスクリプトはスケッチ名の編集と画像の書き出しを実装する。 -->
     <script>
-        // まず、HTML要素への参照を取得する。
+        // 最初はPaper.jsの必要な準備を行う。
+        const canvas = document.getElementById('paper-canvas');
+        paper.install(window);
+        paper.setup(canvas);
+
+        // HTML要素への参照を取得する。
         const sketchNameSpan = document.getElementById('sketch-name-label');
         const sketchNameTextInput = document.getElementById('sketch-name-input');
         const sketchNameButton = document.getElementById('sketch-name-edit');
@@ -111,33 +122,17 @@
 
         // スケッチを画像としてダウンロードする関数
         function downloadImage(e) {
-            // 念のためにTwo.jsが機能しているかどうかを確認する。
-            if (two) {
-                // スケッチが実際に描かれているHTML要素を取得する。
-                const domElement = two.renderer.domElement;
-                // スケッチ名も取得する。
-                const sketchName = sketchNameSpan.textContent;
+            if (project) {
+                // Paper.jsにSVGを書き出してもらう。SVGはそのままHTML要素（DOM要素）として
+                // 使う事ができるので、「domElement」という変数名を付けておく。
+                const domElement =  project.exportSVG({matchShape:true});
 
-                // SVGなのか？「tagName」は大文字で返されることがあるので、小文字に変換してから比較する。
-                if (domElement && domElement.tagName.toLowerCase() === 'svg') {
-                    // OSで画像がプレビューできるために、SVGにパラメータが不足しているのでここで追加する。
-                    domElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-                    domElement.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
-                    domElement.setAttribute('xml:space', 'preserve');
-
-                    // SVG画像は、HTMLのようなコードでできている。独立したファイルにしたい場合、その文字列の頭に「XML宣言」という記述を付け加える必要がある。
-                    const svgCode = `<?xml version="1.0" encoding="utf-8"?>\n${domElement.outerHTML}`;
+                // SVG画像は、HTMLのようなコードでできている。独立したファイルにしたい場合、その文字列の頭に「XML宣言」という記述を付け加える必要がある。
+                const svgCode = `<?xml version="1.0" encoding="utf-8"?>\n${domElement.outerHTML}`;
                     // 保存するデータ（blob）を取得する。
                     const blob = new Blob([svgCode], {type:"image/svg+xml;charset=utf-8"});
                     // ファイルを保存する。「saveAs」関数はFileSaverライブラリに定義・実装されている。
                     saveAs(blob, sketchName + ".svg");
-                }
-                else if (domElement && domElement.tagName.toLowerCase() === 'canvas') {
-                    // canvasの場合、PNGとして保存する。方法はSVGよりも簡単。
-                    domElement.toBlob(function(blob){
-                        saveAs(blob, sketchName + '.png');
-                    }, 'image/png');
-                }
             }
         }
 
