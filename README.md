@@ -1,2 +1,2 @@
-# TwoJsSketches
-Two.jsでスケッチをするためのテンプレートです。
+# PaperJSスケッチ
+PaperJSでスケッチをするためのテンプレートです。
