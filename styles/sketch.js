@@ -5,24 +5,24 @@ let sketchName = 'スタイル';
 
 // ここでいくつかの描画スタイルを定義して、全体のデフォルトや
 // 各々の図形のスタイルとして適用する。
-const basicStyle = {
+let basicStyle = {
     fillColor: null,
     strokeColor: 'black',
     strokeWidth: 1,
 };
 
-const thickLineStyle = {
+let thickLineStyle = {
     fillColor: null,
     strokeColor: 'black',
     strokeWidth: 5,
 };
 
-const redFillStyle = {
+let redFillStyle = {
     fillColor: 'rgb(255,0,0)',
     strokeColor: null
 };
 
-const backgroundStyle = {
+let backgroundStyle = {
     fillColor: '#66CCFF',
     strokeColor: null
 }
@@ -37,14 +37,14 @@ window.onload = function() {
     project.currentStyle = basicStyle;
 
     // 背景となる長方形を描く
-    const background = Path.Rectangle([0,0], view.viewSize);
+    let background = Path.Rectangle([0,0], view.viewSize);
     background.style = backgroundStyle;
 
     // いくつか異なるスタイルの図形を描く。
     Path.Circle([200, 200], 50);
 
     // 長方形を追加して、スタイルを指定する。
-    const rect = Path.Rectangle([300, 300], [100, 50]);
+    let rect = Path.Rectangle([300, 300], [100, 50]);
     rect.style = thickLineStyle;
 
     // このような形でもスタイルを指定することができる。
