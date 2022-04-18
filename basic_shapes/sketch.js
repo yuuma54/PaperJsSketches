@@ -4,10 +4,10 @@ let sketchName = '基本的な図形';
 // Paper.jsの弧の書き方は少し癖がある。他のライブラリでよく、中心点、半径と開始と終了の角度で
 // 描くので、ここはこの形の引数を渡して、値を変換して弧を描く。
 function arcAngles(center, radius, fromRadians, toRadians) {
-    const midRadians = (fromRadians + toRadians) * 0.5;
-    const from = [center[0] + Math.cos(fromRadians) * radius, center[1] + Math.sin(fromRadians) * radius];
-    const to = [center[0] + Math.cos(toRadians) * radius, center[1] + Math.sin(toRadians) * radius];
-    const mid = [center[0] + Math.cos(midRadians) * radius, center[1] + Math.sin(midRadians) * radius];
+    let midRadians = (fromRadians + toRadians) * 0.5;
+    let from = [center[0] + Math.cos(fromRadians) * radius, center[1] + Math.sin(fromRadians) * radius];
+    let to = [center[0] + Math.cos(toRadians) * radius, center[1] + Math.sin(toRadians) * radius];
+    let mid = [center[0] + Math.cos(midRadians) * radius, center[1] + Math.sin(midRadians) * radius];
     Path.Arc(from, mid, to);
 }
 
@@ -41,13 +41,13 @@ window.addEventListener('load', function() {
     Path.Arc([100, 100], [155, 125], [150, 150]);
 
     // 弧の書き方は少し分かりにくいので、3つの座標を見せると：
-    const from = [200, 100];
-    const mid = [255, 125];
-    const to = [250, 150];
+    let from = [200, 100];
+    let mid = [255, 125];
+    let to = [250, 150];
     Path.Arc(from, mid, to);
-    const from_circle = Path.Circle(from, 5);
-    const mid_circle = Path.Circle(mid, 5);
-    const to_circle = Path.Circle(to, 5);
+    let from_circle = Path.Circle(from, 5);
+    let mid_circle = Path.Circle(mid, 5);
+    let to_circle = Path.Circle(to, 5);
 
     from_circle.fillColor = null;
     mid_circle.fillColor = null;
@@ -65,10 +65,10 @@ window.addEventListener('load', function() {
     view.draw();
 
     // 多角形 : 中心の座標, 辺の数, 半径
-    const regularPoly = Path.RegularPolygon([100, 250], 6, 50);
+    let regularPoly = Path.RegularPolygon([100, 250], 6, 50);
 
     // 星 : 中心の座標, 角の数, 内側の半径, 外側の半径
-    const star = Path.Star([250, 250], 5, 25, 50);
+    let star = Path.Star([250, 250], 5, 25, 50);
 
     // 多角形や星の向きはこう変えられる。
     regularPoly.rotate(45);
