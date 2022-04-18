@@ -13,7 +13,7 @@ function arcAngles(center, radius, fromRadians, toRadians) {
 
 // ロードが完了した時に実行する関数。ここで初期化の処理を書く。
 // P5.jsやProcessingのsetupと同じ役割。
-window.onload = function() {
+window.addEventListener('load', function() {
     // キャンバスの大きさを指定する。
     view.viewSize = new Size(500, 500);
 
@@ -73,4 +73,4 @@ window.onload = function() {
     // 多角形や星の向きはこう変えられる。
     regularPoly.rotate(45);
     star.rotate(90);
-};
+});
