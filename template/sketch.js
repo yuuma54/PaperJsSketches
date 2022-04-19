@@ -1,5 +1,5 @@
 // ここにスケッチ名を指定することができる。
-let sketchName = 'My Sketch';
+let sketchName = 'my sketch';
 
 // ロードが完了した時に実行する関数。ここで初期化の処理を書く。
 // P5.jsやProcessingのsetupと同じ役割。
