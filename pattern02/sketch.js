@@ -7,9 +7,10 @@ window.addEventListener('load', function(){
     // キャンバスの大きさを指定する。
     view.viewSize = new Size(500, 500);
 
-    let backgroundColor = new Color('#ebe546');
+    let backgroundColor = new Color('#47a025');
     let lineColor1 = new Color('#f01313');
     let lineColor2 = new Color('#000000');
+    let starColor = new Color('#ffe66d');
 
     let width = 2;
     let widthB =8;
@@ -31,16 +32,12 @@ window.addEventListener('load', function(){
         line3.fillColor = lineColor1;
         let line4 = Path.Rectangle([0, i+space], [tall, width]);
         line4.fillColor = lineColor1;
+        //星
+        for (let j = 23; j < 500; j = j + 40){
+            let star = Path.Star([j, i+23], 5, 5, 10);
+            star.fillColor = starColor;
+        }
     }
-
-    for (let j = 18; j < 500; j = j + 40){
-        //黒の線
-        let line5 = Path.Rectangle([j, 0], [widthB, tall]);
-        line5.fillColor = lineColor2;
-        let line6 = Path.Rectangle([0, j], [tall, widthB]);
-        line6.fillColor = lineColor2;
-    }
-
 
     // 画面を描く。
     view.draw();
