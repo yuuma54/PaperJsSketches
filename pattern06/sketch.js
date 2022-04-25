@@ -7,23 +7,32 @@ window.addEventListener('load', function(){
     // キャンバスの大きさを指定する。
     view.viewSize = new Size(500, 500);
 
-    let x = view.viewSize.width * 0.25;
-    let y = view.viewSize.height * 0.3;
-    let rectSize = [200, 300];
+    let backgroundColor = new Color('#000000');
+    let boxColor = new Color ('#00ffff');
+    let boxColor2 = new Color ('#ff00ff');
 
-    // 長方形を追加する。
-    let rect = new Path.Rectangle([x, y], rectSize);
-    rect.strokeColor = 'black';
+    let background = Path.Rectangle([0, 0], view.viewSize);
+    background.fillColor = backgroundColor;
 
-    project.currentStyle = {
-        strokeColor: '#000000', // 線の色
-        fillColor: null, // 塗りなし
-        strokeWidth: 5, // 線の幅
-        dashArray: [5, 10, 20, 8] // 線の長さ、間隔の長さ、線の長さ、間隔の長さ
-    };
+    for (let i = 0; i <= 500; i = i + 120){
+        for (let j = 0; j <= 500; j = j + 170){
+            let box =  Path.Rectangle([i, j], [60, 60]);
+            box.fillColor = boxColor;
+            box.rotate(45);
+            box.scale(1.2, 0.6);
+            
+            let boxCopy = box.clone();
+            boxCopy.position = [i + 3 , j + 80];
+            boxCopy.fillColor = boxColor2;
+            boxCopy.rotate(63);
 
-    let line = Path.Line([20, 20], [100, 50]);
-
+            let boxCopy2 = box.clone();
+            boxCopy2.position = [i + 57 , j + 80];
+            boxCopy2.fillColor = boxColor2;
+            boxCopy2.rotate(117);
+        }
+        //思ったようにいかなかった
+    }
     // 画面を描く。
     view.draw();
 });
