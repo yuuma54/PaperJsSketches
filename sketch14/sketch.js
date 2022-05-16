@@ -8,12 +8,12 @@ window.addEventListener('load', function(){
     view.viewSize = new Size(500, 500);
 
     project.currentStyle = {
-        strokeColor: '#7a5e2a', // 線の色
+        strokeColor: '#A44A3F', // 線の色
         fillColor: null, // 塗りの色
-        strokeWidth: 4 // 線の幅
+        strokeWidth: 2 // 線の幅
     };
 
-    let backgroundColor = new Color('#fce832');
+    let backgroundColor = new Color('#000000');
 
     let background = Path.Rectangle([0, 0], view.viewSize);
     background.fillColor = backgroundColor;
@@ -22,9 +22,9 @@ window.addEventListener('load', function(){
     let y = view.viewSize.height * 0.5;
 
     let count = 1000;
-    let angle = Math.PI * 0.13;
-    let length = 10;
-    let dl = 4;
+    let angle = Math.PI * 0.36;
+    let length = 20;
+    let dl = 1;
     let randomRange = 0;
 
 
