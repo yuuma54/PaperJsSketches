@@ -40,6 +40,9 @@ window.addEventListener('load', function(){
         '#dddddd',
         '#aaaaaa',
     ];
+    let colors2 = [
+        
+    ]
 
     for (let i = 0; i < count; i++) {
         //points.push([x, y]);
