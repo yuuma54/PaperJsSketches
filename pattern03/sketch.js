@@ -14,18 +14,18 @@ window.addEventListener('load', function(){
     let width = 5;
     let widthB =8;
     let tall = 500;
-    let space = 10;
+    let space = 16;
         
     // 長方形 : 左上の座標, 幅と高さ
     let background = Path.Rectangle([0, 0], view.viewSize);
     background.fillColor = backgroundColor;
 
-    for (let i = 0; i < 500; i = i + space){
+    for (let i = 0; i < view.viewSize.width; i = i + space){
         let baseline = Path.Rectangle([0, i], [tall, width]);
         baseline.fillColor = lineColor2
     }
 
-    for (let j = -250; j < 750; j = j + 100){
+    for (let j = -view.viewSize.width * 0.5; j < view.viewSize.width * 1.5; j = j + 100){
         let mainline = Path.Rectangle([j, -125], [25, tall*1.5]);
         mainline.fillColor = backgroundColor;
         mainline.rotate(45);

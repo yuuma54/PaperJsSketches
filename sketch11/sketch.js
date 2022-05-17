@@ -10,7 +10,7 @@ window.addEventListener('load', function(){
     project.currentStyle = {
         strokeColor: '#A44A3F', // 線の色
         fillColor: null, // 塗りの色
-        strokeWidth: 2 // 線の幅
+        strokeWidth: 5 // 線の幅
     };
 
     let backgroundColor = new Color('#000000');
@@ -22,8 +22,8 @@ window.addEventListener('load', function(){
     let y = view.viewSize.height * 0.5;
 
     let count = 1000;
-    let angle = Math.PI * 0.36;
-    let length = 20;
+    let angle = Math.PI * 0.3;
+    let length = 0.1;
     let dl = 1;
     let randomRange = 0;
 
@@ -40,7 +40,7 @@ window.addEventListener('load', function(){
         x += Math.cos(theta) * length + rand_x;
         y += Math.sin(theta) * length + rand_y;
 
-        angle += Math.PI * 0.0001;
+        angle += Math.PI * 0.8;
         theta += angle;
         length += dl;
     }

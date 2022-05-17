@@ -18,7 +18,7 @@ window.addEventListener('load', function(){
         strokeWidth: 0 // 線の幅
     };
 
-    let backgroundColor = new Color('#fff6f5');
+    let backgroundColor = new Color('#000000');
 
     let background = Path.Rectangle([0, 0], view.viewSize);
     background.fillColor = backgroundColor;
@@ -26,17 +26,17 @@ window.addEventListener('load', function(){
     let x = view.viewSize.width * 0.5;
     let y = view.viewSize.height * 0.5;
 
-    let count = 150;
-    let angle = Math.PI * 0.1;
-    let length = 0.25;
-    let dl = 0.3;
+    let count = 800;
+    let angle = Math.PI * 0.08;
+    let length = 0.1;
+    let dl = 0.075;
     let randomRange = 0;
 
 
     let points = [];
-    let theta = Math.PI * 0.1;
+    let theta = Math.PI * 0.05;
 
-    let colors = ["#d9e5d6","#00a7e1","#eddea4",];
+    let colors = ["#0ff777"];
 
     for (let i = 0; i < count; i++) {
         //points.push([x, y]);
@@ -47,7 +47,7 @@ window.addEventListener('load', function(){
         x += Math.cos(theta) * length;
         y += Math.sin(theta) * length;
 
-        angle += Math.PI * 0.0000001;
+        angle += Math.PI * 0.000001;
         theta += angle;
         length += dl;
 

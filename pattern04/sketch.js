@@ -19,8 +19,8 @@ window.addEventListener('load', function(){
     let background = Path.Rectangle([0, 0], view.viewSize);
     background.fillColor = backgroundColor;
 
-    for (let i = 0; i < 500; i = i + 40){
-        for (let j = 0; j < 500; j = j + 40){
+    for (let i = 0; i < view.viewSize.width; i = i + 40){
+        for (let j = 0; j < view.viewSize.height; j = j + 40){
             let box1 = Path.Rectangle([i, j], [width, tall]);
             box1.fillColor = boxColor1;
             let box2 = Path.Rectangle([i + gap, j + gap], [width, tall]);

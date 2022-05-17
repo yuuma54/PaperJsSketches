@@ -5,7 +5,7 @@ let sketchName = 'My Sketch';
 // P5.jsやProcessingのsetupと同じ役割。
 window.addEventListener('load', function(){
     // キャンバスの大きさを指定する。
-    view.viewSize = new Size(500, 700);
+    view.viewSize = new Size(500, 500);
 
     function pickRandom(array) {
         let i = Math.floor(Math.random() * array.length);
@@ -24,14 +24,14 @@ window.addEventListener('load', function(){
     let background = Path.Rectangle([0, 0], view.viewSize);
     background.fillColor = backgroundColor;
 
-    let x = view.viewSize.width * 0.5;
-    let y = view.viewSize.height * 0.5;
+    let x = view.viewSize.width * 0;
+    let y = view.viewSize.height * 0;
 
-    let a = view.viewSize.width * 0.5;
-    let b = view.viewSize.height * 0.5;
+    let a = view.viewSize.width * 0;
+    let b = view.viewSize.height * 0;
 
-    let m = view.viewSize.width * 0.5;
-    let n = view.viewSize.height * 0.5;
+    let m = view.viewSize.width * 0;
+    let n = view.viewSize.height * 0;
 
     let count = 270;
     let angle = Math.PI * 0.05;
@@ -65,11 +65,11 @@ window.addEventListener('load', function(){
     ];
 
     let sizes = [
-        3,
+        4,
         8,
-        10,
+        12,
         15,
-        20
+        18
     ];
 
     for (let p = 0; p < view.viewSize.height; p += 40){
@@ -82,44 +82,44 @@ window.addEventListener('load', function(){
         }
     }
 
-    for (let i = 0; i < count * 0.6; i++) {
-        m += Math.cos(theta) * length3;
-        n += Math.sin(theta) * length3;
+    // for (let i = 0; i < count * 0.6; i++) {
+    //     m += Math.cos(theta) * length3;
+    //     n += Math.sin(theta) * length3;
 
-        angle3 += Math.PI * 0.0000001;
-        theta += angle3;
-        length3 += dl3;
+    //     angle3 += Math.PI * 0.0000001;
+    //     theta += angle3;
+    //     length3 += dl3;
 
-        let circle = Path.Circle([m, n], 20);
-        circle.fillColor = pickRandom(colors);
+    //     let circle = Path.Circle([m, n], 20);
+    //     circle.fillColor = pickRandom(colors);
 
-    }
+    // }
 
-    for (let i = 0; i < count; i++) {
-        a += Math.cos(theta) * length2;
-        b += Math.sin(theta) * length2;
+    // for (let i = 0; i < count; i++) {
+    //     a += Math.cos(theta) * length2;
+    //     b += Math.sin(theta) * length2;
 
-        angle2 += Math.PI * 0.0000001;
-        theta += angle2;
-        length2 += dl2;
+    //     angle2 += Math.PI * 0.0000001;
+    //     theta += angle2;
+    //     length2 += dl2;
 
-        let rect = Path.Rectangle([a, b], [20, 20]);
-        rect.fillColor = pickRandom(colors);
-        rect.rotate(45)
-    }
+    //     let rect = Path.Rectangle([a, b], [20, 20]);
+    //     rect.fillColor = pickRandom(colors);
+    //     rect.rotate(45)
+    // }
 
-    for (let i = 0; i < count * 1.5; i++) {
+    // for (let i = 0; i < count * 1.5; i++) {
         
-        x += Math.cos(theta) * length;
-        y += Math.sin(theta) * length;
+    //     x += Math.cos(theta) * length;
+    //     y += Math.sin(theta) * length;
 
-        angle += Math.PI * 0.0000001;
-        theta += angle;
-        length += dl;
+    //     angle += Math.PI * 0.0000001;
+    //     theta += angle;
+    //     length += dl;
 
-        let circle = Path.Circle([x, y], 3);
-        circle.fillColor = pickRandom(colors);
-    }
+    //     let circle = Path.Circle([x, y], 4);
+    //     circle.fillColor = pickRandom(colors);
+    // }
 
 
     // 画面を描く。
