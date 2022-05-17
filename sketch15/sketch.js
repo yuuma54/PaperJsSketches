@@ -68,6 +68,7 @@ window.addEventListener('load', function(){
         3,
         8,
         10,
+        15,
         20
     ];
 
