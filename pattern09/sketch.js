@@ -13,28 +13,49 @@ window.addEventListener('load', function(){
     let background = Path.Rectangle([0, 0], view.viewSize);
     background.fillColor = backgroundColor;
 
-    for (i = 0; i <= view.viewSize.width * 1.1; i = i + 8){
-        for (j = 0; j < view.viewSize.height; j = j + 150){
-            let line1 = Path.Line([i, j], [i - 10, j + 15]);
+    let gap = 2;
+    let x_gap = 3;
+    let y_gap = 7;
+    let linewidth = 1;
+    let linewidth2 = 12;
+
+
+    // for (i = 0; i <= view.viewSize.width * 1.1; i += 8){
+    //     for (j = 0; j < view.viewSize.height; j += 80){
+    //         let line1 = Path.Line([i, j], [i - x_gap, j + 15]);
+    //         line1.strokeColor = lineColor;
+    //         line1.strokeWidth = linewidth;
+    //         let line2 = Path.Line([i, j + 25], [i - x_gap, j + 40]);
+    //         line2.strokeColor = lineColor;
+    //         line2.strokeWidth = linewidth;
+    //         let line3 = Path.Line([i, j + 50], [i - x_gap, j + 65]);
+    //         line3.strokeColor = lineColor;
+    //         line3.strokeWidth = linewidth;
+
+    //         let line4 = Path.Line([j, 0], [j, view.viewSize.height]);
+    //         line4.strokeColor = lineColor;
+    //         line4.strokeWidth = linewidth2;
+    //     }
+    // }
+
+
+    for (i = 0; i <= view.viewSize.width * 1.1; i += 4){
+        for (j = 0; j < view.viewSize.height; j += 70){
+            let line1 = Path.Line([i, j], [i - x_gap, j + y_gap]);
             line1.strokeColor = lineColor;
-            line1.strokeWidth = 3;
-            let line2 = Path.Line([i, j + 25], [i - 10, j + 40]);
+            line1.strokeWidth = linewidth;
+            let line2 = Path.Line([i, j + y_gap + gap], [i - x_gap, j + y_gap * 2 + gap]);
             line2.strokeColor = lineColor;
-            line2.strokeWidth = 3;
-            let line3 = Path.Line([i, j + 50], [i - 10, j + 65]);
-            line3.strokeColor = lineColor;
-            line3.strokeWidth = 3;
+            line2.strokeWidth = linewidth;
+            // let line3 = Path.Line([i, j + y_gap * 2 + gap * 2], [i - x_gap, j + y_gap * 3 + gap * 2]);
+            // line3.strokeColor = lineColor;
+            // line3.strokeWidth = linewidth;
 
             let line4 = Path.Line([j, 0], [j, view.viewSize.height]);
             line4.strokeColor = lineColor;
-            line4.strokeWidth = 18;
-            // let line5 = Path.Line([j, 0], [j, view.viewSize.height]);
-            // line5.strokeColor = backgroundColor;
-            // line5.strokeWidth = 1;
+            line4.strokeWidth = linewidth2;
         }
-
     }
-
     // 画面を描く。
     view.draw();
 });

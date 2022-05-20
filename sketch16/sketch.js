@@ -39,7 +39,7 @@ window.addEventListener('load', function(){
     let length = 0;
     let length2 = 0;
     let length3 = 0;
-    let dl = 0.06;
+    let dl = 0.09;
     let dl2 = 0.12;
     let dl3 = 0.2;
     let randomRange = 30;
@@ -84,7 +84,7 @@ window.addEventListener('load', function(){
         theta += angle3;
         length3 += dl3;
 
-        let circle = Path.Circle([m, n], 20);
+        let circle = Path.Circle([m, n], 25);
         circle.fillColor = pickRandom(colors);
 
     }
@@ -97,12 +97,12 @@ window.addEventListener('load', function(){
         theta += angle2;
         length2 += dl2;
 
-        let rect = Path.Rectangle([a, b], [20, 20]);
-        rect.fillColor = pickRandom(colors);
-        rect.rotate(45)
+        let circle = Path.Circle([a, b], 15);
+        circle.fillColor = pickRandom(colors);
+        circle.rotate(45)
     }
 
-    for (let i = 0; i < count * 1.5; i++) {
+    for (let i = 0; i < count * 1.2; i++) {
         
         x += Math.cos(theta) * length;
         y += Math.sin(theta) * length;
@@ -111,7 +111,7 @@ window.addEventListener('load', function(){
         theta += angle;
         length += dl;
 
-        let circle = Path.Circle([x, y], 4);
+        let circle = Path.Circle([x, y], 7);
         circle.fillColor = pickRandom(colors);
     }
 
