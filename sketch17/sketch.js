@@ -18,20 +18,21 @@ window.addEventListener('load', function(){
         strokeWidth: 1 // 線の幅
     };
 
-    let backgroundColor = new Color('#000000');
+    let backgroundColor = new Color('#ffffff');
 
     let background = Path.Rectangle([0, 0], view.viewSize);
     background.fillColor = backgroundColor;
 
-    let randomRange = 5;
+    let randomRange = 10000;
 
-    for(let x = 0; x < view.viewSize.width; x += 50){
-        for(let y = 0; y < view.viewSize.height; y += 50){
+    for(let x = 0; x < view.viewSize.width; x += 40){
+        for(let y = 0; y < view.viewSize.height; y += 40){
             let rand_x = Math.random() * randomRange - randomRange * 0.5;
             let rand_y = Math.random() * randomRange - randomRange * 0.5;
 
-            let p = Path.Line([0, 0], [x + rand_x, y + rand_y]);
-            p.fillColor = '#ffffff';
+            let p = Path.Line([x, y], [x + rand_x, y + rand_y]);
+            p.strokeColor = '#000000';
+            p.strokeWidth = 3
         }
     }
 
